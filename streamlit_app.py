@@ -38,12 +38,17 @@ def generate_fortune():
     kyouka = ["数１","数２","数３","数A","数B","数C","現国","言語文化","論国","古典","文学",
               "C英","論表","物理","生物","化学","日本史","地理","世界史","公共","情報","舞ステ","家庭科","書道","音楽","美術",
               "体育"]
+    spot = ["教室","体育館","駐輪場","グラウンド","多目的","体育館","テニスコート","プール","同窓会館","而立会館",
+            "昇降口","図書館","進路指導室","会議室","事務室","購買","渡り廊下","自学の道","トイレ","保健室",
+            "化学室","物理室","生物室","地歴教室","数学教室","コンピューター室","ゴミ捨て場","茶道室","武道場",
+            "コンピューター室","被服室","調理室","職員室","書道室","音楽室","美術室","音楽室","視聴覚室","放送室",]
     
     fortune = random.choice(fortunes)
     color = random.choice(colors)
     maizuru = random.choice(tamasii)
     subjects = random.choice(kyouka)
-    return fortune, color, year, maizuru, subjects
+    spots = random.choice(spot)
+    return fortune, color, year, maizuru, subjects, spots
 
 # Streamlit UI
 st.title("omzh占い")
@@ -55,14 +60,16 @@ if "fortune" not in st.session_state:
     st.session_state.year = ""
     st.session_state.maizuru = ""
     st.session_state.subjects = ""
+    st.session_state.spots = ""
 
 def show_fortune():
-    fortune, color, year, maizuru, subjects = generate_fortune()
+    fortune, color, year, maizuru, subjects, spots = generate_fortune()
     st.session_state.fortune = fortune
     st.session_state.color = color
     st.session_state.year = year
     st.session_state.maizuru = maizuru
     st.session_state.subjects = subjects
+    st.session_state.spots = spots
 
 # 占うボタン（丸くするためにCSSを追加）
 st.markdown("""
@@ -85,6 +92,7 @@ if st.session_state.fortune:
     st.write(f"#### 今日のあなたは…{st.session_state.year}回生")
     st.write(f"#### 今日の舞鶴魂:{st.session_state.maizuru}")
     st.write(f"#### 勉強してください:{st.session_state.subjects}")
+    st.write(f"#### パワースポット:{st.session_state.spots}")
     
     if st.button("もう一度占う"):
         show_fortune()
