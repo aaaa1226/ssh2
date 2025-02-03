@@ -42,18 +42,13 @@ def generate_fortune():
             "昇降口","図書館","進路指導室","会議室","事務室","購買","渡り廊下","自学の道","トイレ","保健室",
             "化学室","物理室","生物室","地歴教室","数学教室","コンピューター室","ゴミ捨て場","茶道室","武道場",
             "コンピューター室","被服室","調理室","職員室","書道室","音楽室","美術室","音楽室","視聴覚室","放送室",]
-    item = ["シャーペン","消しゴム","ジェットストリーム","舞鶴帽子","舞鶴扇子","購買のパン","イチゴオレ","鯛茶漬け",
-            "ドデカミン","学ラン","カーディガン","校章","スリッパ","お弁当","日替わり弁当","かつ丼","あゆみ","学習時間調査",
-            "自転車","体操服","鉛筆","進研模試","全統模試","テストの答案","iPad","教科書","化学セミナー","良問の風","サクシード",
-            "Leap","Be","Engage","古語単","現単","パンダ","レジェンド","生物ノート","ルーズリーフ","体育館シューズ","イヤホン",
-            "唐揚げ","合服",]    
+    
     fortune = random.choice(fortunes)
     color = random.choice(colors)
     maizuru = random.choice(tamasii)
     subjects = random.choice(kyouka)
     spots = random.choice(spot)
-    items = random.choice(item)
-    return fortune, color, year, maizuru, subjects, spots, items
+    return fortune, color, year, maizuru, subjects, spots
 
 # Streamlit UI
 st.title("omzh占い")
@@ -66,17 +61,15 @@ if "fortune" not in st.session_state:
     st.session_state.maizuru = ""
     st.session_state.subjects = ""
     st.session_state.spots = ""
-    st.session_state.items = ""
 
 def show_fortune():
-    fortune, color, year, maizuru, subjects, spots, items = generate_fortune()
+    fortune, color, year, maizuru, subjects, spots = generate_fortune()
     st.session_state.fortune = fortune
     st.session_state.color = color
     st.session_state.year = year
     st.session_state.maizuru = maizuru
     st.session_state.subjects = subjects
     st.session_state.spots = spots
-    st.session_state = items
 
 # 占うボタン（丸くするためにCSSを追加）
 st.markdown("""
@@ -100,7 +93,6 @@ if st.session_state.fortune:
     st.write(f"#### ❤️今日の舞鶴魂:{st.session_state.maizuru}")
     st.write(f"#### ❤️勉強してください:{st.session_state.subjects}")
     st.write(f"#### ❤️パワースポット:{st.session_state.spots}")
-    st.write(f"#### ❤️ラッキーアイテム:{st.session_state.items}")
     
     if st.button("もう一度占う"):
         show_fortune()
