@@ -55,21 +55,21 @@ st.title("omzh占い")
 st.write("ようこそomzh占いへ。ここではあなたの運勢を、信頼できない私が占ってみせましょう。信じれば、あたります。この占いについて、悪い評価をした場合には、１０００万の罰金を科すのでご了承ください。")
 
 if "fortune" not in st.session_state:
-    st.session_state.fortune = ""
-    st.session_state.color = ""
-    st.session_state.year = ""
-    st.session_state.maizuru = ""
-    st.session_state.subjects = ""
-    st.session_state.spots = ""
+    st.session_state["fortune"] = ""
+    st.session_state["color"] = ""
+    st.session_state["year"] = ""
+    st.session_state["maizuru"] = ""
+    st.session_state["subjects"] = ""
+    st.session_state["spots"] = ""
 
 def show_fortune():
     fortune, color, year, maizuru, subjects, spots = generate_fortune()
-    st.session_state.fortune = fortune
-    st.session_state.color = color
-    st.session_state.year = year
-    st.session_state.maizuru = maizuru
-    st.session_state.subjects = subjects
-    st.session_state.spots = spots
+    st.session_state["fortune"] = fortune
+    st.session_state["color"] = color
+    st.session_state["year"] = year
+    st.session_state["maizuru"] = maizuru
+    st.session_state["subjects"] = subjects
+    st.session_state["spots"] = spots
 
 # 占うボタン（丸くするためにCSSを追加）
 st.markdown("""
@@ -87,12 +87,12 @@ if st.button("占う"):
     show_fortune()
 
 if st.session_state.fortune:
-    st.write(f"### {st.session_state.fortune}")
-    st.write(f"#### ❤️今日の学年カラー: {st.session_state.color}")
-    st.write(f"#### ❤️今日のあなたは…{st.session_state.year}回生")
-    st.write(f"#### ❤️今日の舞鶴魂:{st.session_state.maizuru}")
-    st.write(f"#### ❤️勉強してください:{st.session_state.subjects}")
-    st.write(f"#### ❤️パワースポット:{st.session_state.spots}")
+    st.write(f"### {st.session_state["fortune"]}")
+    st.write(f"#### ❤️今日の学年カラー: {st.session_state["color"]}")
+    st.write(f"#### ❤️今日のあなたは…{st.session_state["year"]}回生")
+    st.write(f"#### ❤️今日の舞鶴魂:{st.session_state["maizuru"]}")
+    st.write(f"#### ❤️勉強してください:{st.session_state["subjects"]}")
+    st.write(f"#### ❤️パワースポット:{st.session_state["spots"]}")
     
     if st.button("もう一度占う"):
         show_fortune()
