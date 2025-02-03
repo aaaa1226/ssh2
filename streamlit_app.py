@@ -88,11 +88,11 @@ if st.button("占う"):
 
 if st.session_state.fortune:
     st.write(f"### {st.session_state.fortune}")
-    st.write(f"#### 今日の学年カラー: {st.session_state.color}")
-    st.write(f"#### 今日のあなたは…{st.session_state.year}回生")
-    st.write(f"#### 今日の舞鶴魂:{st.session_state.maizuru}")
-    st.write(f"#### 勉強してください:{st.session_state.subjects}")
-    st.write(f"#### パワースポット:{st.session_state.spots}")
+    st.write(f"#### ❤️今日の学年カラー: {st.session_state.color}")
+    st.write(f"#### ❤️今日のあなたは…{st.session_state.year}回生")
+    st.write(f"#### ❤️今日の舞鶴魂:{st.session_state.maizuru}")
+    st.write(f"#### ❤️勉強してください:{st.session_state.subjects}")
+    st.write(f"#### ❤️パワースポット:{st.session_state.spots}")
     
     if st.button("もう一度占う"):
         show_fortune()
